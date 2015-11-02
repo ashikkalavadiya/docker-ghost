@@ -1,0 +1,19 @@
+web:
+  restart: always
+  build: .
+  #you can change mapped volume
+  volumes:
+    - /var/lib/ghost/data:/var/lib/ghost/data
+    - /var/lib/ghost/themes:/usr/src/ghost/content/themes
+  ports:
+    - "2368:2368"
+  environment:
+    - DB_HOST=10.0.0.1
+    - DB_CLIENT=mysql
+    - DB_USER=ghost
+    - DB_PASSWORD=password
+    - DB_PORT=3306
+    - DB_DATABASE=ghost
+    - NODE_ENV=production
+    - URL=http://my-ghostapp.net
+
