@@ -1,5 +1,5 @@
 FROM ghost:latest
-MAINTAINER Ashik Patel <ashik@promactinfo.com>
+MAINTAINER Ashik Patel <ashik.kalavadiya@gmail.com>
 
 RUN chown -R user:user /usr/src/ghost
 
