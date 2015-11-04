@@ -1,19 +1,24 @@
 web:
   restart: always
+  name: ghost-nginx
   build: .
-  #you can change mapped volume
   volumes:
-    - /var/lib/ghost/data:/var/lib/ghost/data
-    - /var/lib/ghost/themes:/usr/src/ghost/content/themes
+    - /home/azureuser/ghost-nginx/default.conf:/etc/nginx/conf.d/default.conf
+    - /home/azureuser/ghost/data:/var/lib/ghost/data
+    - /home/azureuser/ghost/themes:/usr/src/ghost/content/themes
+    - /home/azureuser/ghost/changeset/frontend.js:/usr/src/ghost/core/server/controllers/frontend.js
+    - /home/azureuser/ghost/changeset/page_url.js:/usr/src/ghost/core/server/helpers/page_url.js
+    - /home/azureuser/ghost/changeset/frontendR.js:/usr/src/ghost/core/server/routes/frontend.js
+
   ports:
-    - "2368:2368"
+    - "80:80"
   environment:
-    - DB_HOST=10.0.0.1
+    - DB_HOST=10.0.0.4
     - DB_CLIENT=mysql
     - DB_USER=ghost
     - DB_PASSWORD=password
     - DB_PORT=3306
     - DB_DATABASE=ghost
     - NODE_ENV=production
-    - URL=http://my-ghostapp.net
+    - URL=http://promactghost.cloudapp.net
 
